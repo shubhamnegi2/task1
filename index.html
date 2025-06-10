@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="d-lg-flex justify-content-between">
+                <div class="steps d-flex justify-content-between align-items-center d-lg-block">
+                    <span>Questions</span>
+                    <strong>01/02</strong>
+                </div>
+                <div class="question">
+                    <p>Below are three options how to respond to the scenerio above. image question the client side
+                        pings you and tell that they have a personal energency and will need to be away from work.
+                        <br> <br>You will..
+                    </p>
+                    <em>Below are three options how to respond to the scenerio above. Please choose the response that
+                        resonates most with you and click <strong>next</strong> to proceed</em>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form id="responseForm">
+                <div class="row justify-content-lg-between justify-content-center  g-5 g-lg-0 py-lg-5 my-5">
+                    <div class="col-8 col-sm-6 col-md-4 col-lg-2">
+                        <div class="option-card">
+                            <label for="option1" class="p-3 pb-1">
+                                <img src="./images/iron-man-2560x2494-infinity-gauntlet-hd-16412.jpg"
+                                    alt="Space Exploration" class="option-image">
+                                <span class="custom-radio"></span>
+                            </label>
+                            <input type="radio" name="response" value="space-exploration" class="radio-input"
+                                id="option1">
+                        </div>
+                    </div>
+                    <div class="col-8 col-sm-6 col-md-4 col-lg-2">
+                        <div class="option-card">
+                            <label for="option2" class="p-3 pb-1">
+                                <img src="./images/Complex_eLearning_322W_322H.png"
+                                    alt="Space Exploration" class="option-image">
+                                <span class="custom-radio"></span>
+                            </label>
+                            <input type="radio" name="response" value="space-exploration" class="radio-input"
+                                id="option2">
+                        </div>
+                    </div>
+                    <div class="col-8 col-sm-6 col-md-4 col-lg-2">
+                        <div class="option-card">
+                            <label for="option3" class="p-3 pb-1">
+                                <img src="./images/ELearning.png"
+                                    alt="Space Exploration" class="option-image">
+                                <span class="custom-radio"></span>
+                            </label>
+                            <input type="radio" name="response" value="space-exploration" class="radio-input"
+                                id="option3">
+                        </div>
+                    </div>
+                    <div class="col-8 col-sm-6 col-md-4 col-lg-2">
+                        <div class="option-card">
+                            <label for="option4" class="p-3 pb-1">
+                                <img src="./images/Medium_Complexity_E_Learning_322W_322H.png"
+                                    alt="Space Exploration" class="option-image">
+                                <span class="custom-radio"></span>
+                            </label>
+                            <input type="radio" name="response" value="space-exploration" class="radio-input"
+                                id="option4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center py-5 btns">
+                    <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                        <span id="submitText">Submit</span>
+                        <span id="submitSpinner" class="spinner-border spinner-border-sm ms-2"
+                            style="display: none;"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <p class="text-sm-end text-center px-3 jsTask"><a class="text-dark" href="./jsTask.html">Task 2</a></p>
+    </main>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

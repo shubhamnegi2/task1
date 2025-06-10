@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roy's Photo Validator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0f0f10;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 700px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 170, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-control, .btn {
+      border-radius: 10px;
+    }
+
+    .btn-primary {
+      background-color: #00ffaa;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #00dd99;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    .photo-inputs .row {
+      margin-bottom: 15px;
+    }
+
+    .list-group-item {
+      background-color: #1a1a1d;
+      color: #fff;
+      border: 1px solid #2a2a2d;
+      border-radius: 8px;
+    }
+
+    h3 {
+      font-weight: 600;
+      color: #00ffaa;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="glass-card">
+    <h3>📸 Roy's Photo Validator</h3>
+
+    <div class="mb-3">
+      <label class="form-label">Minimum Allowed Size (L x L)</label>
+      <input type="number" class="form-control" id="minLength" placeholder="Enter minimum dimension (e.g. 180)">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Number of Photos</label>
+      <input type="number" class="form-control" id="numPhotos" placeholder="Enter number of photos">
+    </div>
+
+    <div id="photoInputs" class="photo-inputs"></div>
+
+    <div class="d-grid gap-2 mb-3">
+      <button class="btn btn-primary" id="validatePhotos">🚀 Validate Photos</button>
+    </div>
+
+    <div class="output mt-4">
+      <h5 class="text-info">Results:</h5>
+      <ul class="list-group" id="resultList"></ul>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#numPhotos').on('input', function () {
+      const count = parseInt($(this).val());
+      const container = $('#photoInputs');
+      container.empty();
+
+      for (let i = 0; i < count; i++) {
+        container.append(`
+          <div class="row gx-2">
+            <div class="col-md-6 mb-2">
+              <input type="number" class="form-control" placeholder="Width (W)" name="width">
+            </div>
+            <div class="col-md-6 mb-2">
+              <input type="number" class="form-control" placeholder="Height (H)" name="height">
+            </div>
+          </div>
+        `);
+      }
+    });
+
+    $('#validatePhotos').on('click', function () {
+      const L = parseInt($('#minLength').val());
+      const resultList = $('#resultList');
+      resultList.empty();
+
+      $('#photoInputs .row').each(function () {
+        const W = parseInt($(this).find('input[name="width"]').val());
+        const H = parseInt($(this).find('input[name="height"]').val());
+
+        let result = '';
+
+        if (W < L || H < L) {
+          result = 'UPLOAD ANOTHER';
+        } else if (W === H) {
+          result = 'ACCEPTED';
+        } else {
+          result = 'CROP IT';
+        }
+
+        resultList.append(`<li class="list-group-item">${result}</li>`);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

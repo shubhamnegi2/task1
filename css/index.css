@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --body-bg-color: #fff;
+    --bg-color1: #86bc25;
+    --bg-color2: #d5e1c1;
+    --bg-color3: #c6d1b3;
+    --btn-bg-color: #bcbcbc;
+    --text-white: #fff;
+    --text-black: #000;
+    --text-color2: darkblue;
+}
+
+html {
+    font-size: 62.5%;
+    /* 10px = 1rem */
+}
+
+body {
+    background-color: var(--body-bg-color);
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.steps {
+    font-size: 1.6rem;
+    background-color: var(--bg-color1);
+    color: var(--text-white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    width: 15%;
+}
+
+.steps span {
+    margin: 1rem 0;
+    display: block;
+}
+
+.question {
+    width: calc(100% - 16%);
+}
+
+.question p {
+    background-color: var(--bg-color2);
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.4rem;
+}
+
+.question em {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    color: #1d1dcd;
+}
+
+/* form section */
+#responseForm {
+    width: calc(100% - 16%);
+    margin-left: auto;
+}
+
+.option-card {
+    background-color: var(--bg-color3);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.option-card img {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #bba9a9;
+    background-color: var(--body-bg-color, #fff);
+    border-radius: 2px;
+    /* Square shape */
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+}
+
+
+input[type="radio"]::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 9px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    top: 0px;
+    left: 3px;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+input[type="radio"]:checked::after {
+    opacity: 1;
+}
+
+.btns button,
+.btns button:disabled {
+    width: 20%;
+    font-size: 1.5rem;
+    background-color: var(--btn-bg-color);
+    border: none;
+    border-radius: 3px;
+    padding: 4px 0px;
+}
+
+.btns button {
+    background-color: var(--bg-color1);
+    color: var(--text-white);
+
+}
+.jsTask{
+    display: none;
+}
+/* media queries */
+@media screen and (max-width: 991.98px) {
+
+    .steps,
+    .question,
+    #responseForm {
+        width: 100%;
+    }
+
+    .steps {
+        border-radius: 0;
+    }
+
+    .question p {
+        border-radius: 0px 0px 5px 5px;
+    }
+
+    .btns button,
+    .btns button:disabled {
+        width: 30%;
+    }
+
+}
+
+@media screen and (max-width: 991.98px) {
+
+    .btns button,
+    .btns button:disabled {
+        width: 100%;
+    }
+
+}
