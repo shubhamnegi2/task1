@@ -1,4 +1,4 @@
-        body {
+  body {
             background: #23272f;
             font-family: 'Inter', sans-serif;
             color: #fff;
@@ -52,6 +52,14 @@
 
         .photo-inputs .row {
             margin-bottom: 15px;
+        }
+
+        .output ul,
+        #photoInputs {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin-bottom: 20px;
         }
 
         .list-group-item {
