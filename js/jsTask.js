@@ -1,5 +1,4 @@
-
-        $(document).ready(function () {
+$(document).ready(function () {
             $('.form-control').on('keyup blur', function (e) {
                 $(this).closest('.form-group').removeClass('has-error');
             });
@@ -93,7 +92,7 @@
                 const L = parseInt($('#minimumAllowedSize').val());
                 $('#resultList').empty();
 
-                $('#photoInputs .row').each(function () {
+                $('#photoInputs .row').each(function (index) {
                     let W = parseInt($(this).find('.width').val());
                     let H = parseInt($(this).find('.height').val());
                     let error = false;
@@ -108,21 +107,21 @@
                         $(this).find('.height').closest('.form-group').append('<span class="help-block">Please enter valid Height</span>');
                         error = true;
                     }
-                    if (error) {
-                        return;
-                    }
-
                     let result = '';
+
+                    
 
                     if (W < L || H < L) {
                         result = 'UPLOAD ANOTHER';
                     } else if (W === H) {
                         result = 'ACCEPTED';
-                    } else {
+                    } else if ((W > L || H > L)) {
                         result = 'CROP IT';
+                    } else {
+                        result = 'INVALID INPUT';
                     }
 
-                    $('#resultList').append(`<li class="list-group-item my-2">${result}</li>`);
+                    $('#resultList').append(`<li class="list-group-item my-2">Photo ${index + 1}: ${result}</li>`);
                     $('html, body').animate({
                         scrollTop: 10000
                     }, 300);
@@ -142,4 +141,3 @@
             }
             return isValid;
         }
-
