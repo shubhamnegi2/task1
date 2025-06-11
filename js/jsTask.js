@@ -1,4 +1,5 @@
-  $(document).ready(function () {
+
+        $(document).ready(function () {
             $('.form-control').on('keyup blur', function (e) {
                 $(this).closest('.form-group').removeClass('has-error');
             });
@@ -137,7 +138,7 @@
                     $('#resultList').append(`<li class="list-group-item my-2">Photo ${index + 1}: ${result}</li>`);
 
                 });
-                
+
                 $('html, body').animate({
                     scrollTop: 10000
                 }, 300);
@@ -157,3 +158,10 @@
             }
             return isValid;
         }
+        $('#numberOfPhotos').on('keypress', function (e) {
+            if (e.which == 13) {
+                e.preventDefault(); // prevent form default submit
+                $('#showInputs').click();
+                $(this).blur();
+            }
+        });
