@@ -1,4 +1,4 @@
-$(document).ready(function () {
+  $(document).ready(function () {
             $('.form-control').on('keyup blur', function (e) {
                 $(this).closest('.form-group').removeClass('has-error');
             });
@@ -93,23 +93,36 @@ $(document).ready(function () {
                 $('#resultList').empty();
 
                 $('#photoInputs .row').each(function (index) {
-                    let W = parseInt($(this).find('.width').val());
-                    let H = parseInt($(this).find('.height').val());
+                    let W_val = $(this).find('.width').val().trim();
+                    let H_val = $(this).find('.height').val().trim();
+
                     let error = false;
-                    if (isNaN(W)) {
+
+                    let isValidWidth = /^\d+$/.test(W_val);
+                    let isValidHeight = /^\d+$/.test(H_val);
+
+                    if (!isValidWidth) {
                         $(this).find('.width').closest('.form-group').addClass('has-error').find('.help-block').remove();
                         $(this).find('.width').closest('.form-group').append('<span class="help-block">Please enter valid Width</span>');
                         error = true;
                     }
 
-                    if (isNaN(H)) {
+                    if (!isValidHeight) {
                         $(this).find('.height').closest('.form-group').addClass('has-error').find('.help-block').remove();
                         $(this).find('.height').closest('.form-group').append('<span class="help-block">Please enter valid Height</span>');
                         error = true;
                     }
-                    let result = '';
 
-                    
+                    if (error) {
+                        $('#resultList').append(`<li class="list-group-item my-2">Photo ${index + 1}: INVALID INPUT</li>`);
+                        return;
+                    }
+
+                    // now safe to parse
+                    let W = parseInt(W_val);
+                    let H = parseInt(H_val);
+
+                    let result = '';
 
                     if (W < L || H < L) {
                         result = 'UPLOAD ANOTHER';
@@ -122,11 +135,14 @@ $(document).ready(function () {
                     }
 
                     $('#resultList').append(`<li class="list-group-item my-2">Photo ${index + 1}: ${result}</li>`);
-                    $('html, body').animate({
-                        scrollTop: 10000
-                    }, 300);
+
                 });
+                
+                $('html, body').animate({
+                    scrollTop: 10000
+                }, 300);
             });
+
 
             $(document).on('change', 'input', function (e) {
                 numOnly(e)
